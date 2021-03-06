@@ -1,0 +1,93 @@
+/* Add a black background color to the top navigation */
+.projectMenu {
+    background-color:#2222fd;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.projectMenu a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.projectMenu a:hover {
+    background-color: #ff9531;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .projectMenu a.active {
+    background-color: #229afd;
+    color: white;
+  }
+
+body {
+      background-color: #70deff;
+  }
+
+  .button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  font: inherit;
+  font-family: 'pixPixelFJVerdana12pt';
+  background-color: #aa49b4;
+  border-style: dashed;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {
+  background-color: #ffe031;
+  transition: all .2s ease-in;
+}
+
+.button:active {
+  background-color: #ffe031;
+  box-shadow: 0 5px #777;
+  transform: translateY(4px);
+  
+}
+
+.container { 
+  height: 200px;
+  position: relative;
+}
+
+.centerImage {
+  
+  text-align:center;
+  padding-top: 20px;
+}
+
+.centerText {
+
+  text-align:center;
+  margin: 0;
+  position: absolute;
+  font: inherit;
+  font-family: 'Arial';
+  top: 120%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size:15px;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}

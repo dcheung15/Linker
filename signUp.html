@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="css/home.css">
+
+    <div class="projectMenu">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="logIn.html">Log In</a>
+        <a href="signUp.html">Sign Up</a>
+    </div>
+
+
+    <div class="container">
+        <div class="center">          
+            <form>
+                <lottie-player
+                  src="https://assets4.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"
+                  background="transparent"
+                  speed="1"
+                  style="justify-content: center"
+                  loop
+                  autoplay
+                ></lottie-player>
+                <input type="text" placeholder="full name" />
+                <input type="text" placeholder="email address" />
+                <input type="text" placeholder="pick a username" />
+                <input type="password" id="password" placeholder="set a password" />
+                <i class="fas fa-eye" onclick="show()"></i>
+                <br>
+                <br>
+              </form>
+    
+              <form class="login-form">
+                <button type="button" onclick="window.location.href='login.html'">
+                  SIGN UP
+                </button>
+              </form>
+            </div>
+          </div>
+        </body>
+
+        <script>
+          function show() {
+            var password = document.getElementById("password");
+            var icon = document.querySelector(".fas");
+    
+            // ========== Checking type of password ===========
+            if (password.type === "password") {
+              password.type = "text";
+            } else {
+              password.type = "password";
+            }
+          }
+        </script>
+
+        </div>
+    </div>
+
+</body>
+</html>
