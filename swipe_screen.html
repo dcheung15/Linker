@@ -27,50 +27,22 @@
             <!-- job card -->
                 <div class="row p-4">
                     <div id="profile_card_carousel" class="carousel slide" data-bs-ride="carousel" data-bs-keyboard="true" data-bs-interval="false">
-                        <div class="carousel-inner">
-
-                            <!--the next card to show if user swiped right-->
-                            <div class="carousel-item" id="next_profile_left">
-                                <div class="card" style="width: 60rem; height: 20rem; overflow-y: scroll;">
-                                    <div class="row g-0">
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h1 class="card-title" id="next_profile_left_name">John Doe</h1>
-                                                <h2>Job Title/Searching For</h2>
-                                                <h3>University/Trade School</h3>
-                                                <p>-- scroll down and add resume? --</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img src="Images/profilepic.png" style='height: 100%; width: 100%;'>
-                                        </div>
-                                    </div>
-                                    <div class="row g-0">
-                                        <div class="col-md-8">
-                                            <h2> Resume </h2>
-                                            <p>
-                                                Placeholder content. You got the finest architecture. Passport stamps, she's cosmopolitan. Fine, fresh, fierce, we got it on lock. Never planned that one day I'd be losing you. She eats your heart out. Your kiss is cosmic, every move is magic. I mean the ones, I mean like she's the one. Greetings loved ones let's take a journey. Just own the night like the 4th of July! But you'd rather get wasted.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                        <div class="carousel-inner" id="carousel_inner">
 
                             <!--the card that is currently being viewed-->
-                            <div class="carousel-item active" id="current_profile" >
+                            <!--<div class="carousel-item active" id="starting_profile_slide" >
                                 <div class="card" style="width: 60rem; height: 20rem; overflow-y: scroll;">
                                     <div class="row g-0">
                                         <div class="col-md-8">
                                             <div class="card-body">
-                                                <h1 class="card-title" id="current_profile_name">My Name</h1>
+                                                <h1 class="card-title" id="starting_profile_slide_name">My Name</h1>
                                                 <h2>Job Title/Searching For</h2>
                                                 <h3>University/Trade School</h3>
                                                 <p>-- scroll down and add resume? --</p>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <img src="Images/profilepic.png" style='height: 100%; width: 100%;'>
+                                            <img id="starting_profile_slide_img" src="Images/profilepic.png" style='height: 100%; width: 100%;'>
                                         </div>
                                     </div>
                                     <div class="row g-0">
@@ -83,22 +55,22 @@
                                     </div>
                                     
                                 </div>
-                            </div>
+                            </div>-->
 
-                            <!--the next card to show if user swiped left-->
-                            <div class="carousel-item" id="next_profile_right">
+                            <!--blank profile card to populate later -->
+                            <div class="carousel-item active" id="template_profile_slide">
                                 <div class="card" style="width: 60rem; height: 20rem; overflow-y: scroll;">
                                     <div class="row g-0">
                                         <div class="col-md-8">
                                             <div class="card-body">
-                                                <h1 class="card-title" id="next_profile_right_name">Jane Doe</h1>
-                                                <h2>Job Title/Searching For</h2>
-                                                <h3>University/Trade School</h3>
+                                                <h1 class="card-title" id="template_profile_slide_name"></h1>
+                                                <h2 id="template_profile_slide_title"></h2>
+                                                <h3 id="template_profile_slide_edu"></h3>
                                                 <p>-- scroll down and add resume? --</p>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <img src="Images/profilepic.png" style='height: 100%; width: 100%;'>
+                                            <img id="template_profile_slide_img" src="Images/profilepic.png" style='height: 100%; width: 100%;'>
                                         </div>
                                     </div>
                                     <div class="row g-0">
@@ -119,9 +91,9 @@
                 <!-- yes/no buttons -->
                 <div class="row">
                     <div class="col-lg align-self-center">
-                        <button type="button" class="btn btn-success" id="yes_button" data-bs-target="#profile_card_carousel"  data-bs-slide="prev" >yes</button>
+                        <button type="button" class="btn btn-success" id="yes_button" data-bs-target="#profile_card_carousel"   >yes</button>
 
-                        <button type="button" class="btn btn-danger" id="no_button" data-bs-target="#profile_card_carousel"  data-bs-slide="next" >no</button>
+                        <button type="button" class="btn btn-danger" id="no_button" data-bs-target="#profile_card_carousel"   >no</button>
                     </div>
                 </div>
         </div>
@@ -131,8 +103,7 @@
 
 
 
-
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        <script src="swipe_screen.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     </body>
 
