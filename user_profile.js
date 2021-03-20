@@ -1,8 +1,15 @@
+/*
+user_profile.js
+CIS 454 Project
+John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
 
+Javascript file for user_profile.html page
+*/
 
 //document.getElementById("user_profile_inputName").readOnly = true;
 //document.getElementById("user_profile_inputEmail").readOnly = true;
 
+// Function to call edit/save functions when buttons are clicked
 window.onload = function() {
     document.getElementById("user_profile_edit_button").onclick = edit_user_profile;
     document.getElementById("user_profile_save_button").onclick = save_user_profile;
