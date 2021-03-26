@@ -1,10 +1,20 @@
+<!--signUp.html
+    CIS 454 Project
+    John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
+    Sign-Up Page.
+    -->
+
 <!DOCTYPE html>
 <html>
-<body>
-
+<!-- Base information-->
+<head>
     <script src="scripts.js"></script>
     <link rel="stylesheet" href="css/home.css">
+</head>
 
+<body>
+
+    <!-- Menu Bar with Page Links-->
     <div class="projectMenu">
         <a class="active" href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -12,52 +22,52 @@
         <a href="signUp.html">Sign Up</a>
     </div>
 
-
-    <div class="container">
-        <div class="center">          
+    <!-- Sign-Up form container-->
+    <div class="login-page">
+        <div class="form">
             <form>
-                <lottie-player
-                  src="https://assets4.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"
-                  background="transparent"
-                  speed="1"
-                  style="justify-content: center"
-                  loop
-                  autoplay
-                ></lottie-player>
+                <!-- <lottie-player src="https://assets4.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"
+                    background="transparent"
+                    speed="1"
+                    style="justify-content: center"
+                    loop
+                    autoplay>
+                </lottie-player> -->
+                <!-- Textboxes-->
                 <input type="text" placeholder="full name" />
                 <input type="text" placeholder="email address" />
                 <input type="text" placeholder="pick a username" />
-                <input type="password" id="password" placeholder="set a password" />
+                <input type="password" id="password" placeholder="enter a password" />
                 <i class="fas fa-eye" onclick="show()"></i>
                 <br>
                 <br>
-              </form>
-    
-              <form class="login-form">
+            </form>
+        
+            <form class = "login-form">
+                <!-- Sign-up Button-->
                 <button type="button" onclick="window.location.href='login.html'">
-                  SIGN UP
+                    SIGN UP
                 </button>
-              </form>
-            </div>
-          </div>
-        </body>
-
-        <script>
-          function show() {
-            var password = document.getElementById("password");
-            var icon = document.querySelector(".fas");
-    
-            // ========== Checking type of password ===========
-            if (password.type === "password") {
-              password.type = "text";
-            } else {
-              password.type = "password";
-            }
-          }
-        </script>
-
+            </form>
         </div>
     </div>
-
 </body>
+
+    <!-- Javascript for Page-->
+    <script>
+        function show() {
+            // Variables for page
+            var password = document.getElementById("password");
+            var icon = document.querySelector(".fas");
+
+            // Checking type of password
+            if (password.type === "password") {
+                password.type = "text";
+            } else {
+                password.type = "password";
+            }
+        };
+    </script>
+
+
 </html>
