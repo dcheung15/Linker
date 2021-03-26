@@ -1,9 +1,6 @@
 /*
-swipe_screen.js
-CIS 454 Project
-John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
+Created by: Kyra Thomas
 
-Javascript file for swipe_screen.html page
 */
 var currentProfile_index = 0; //var to keep track of the current profile from the list of profiles to pull from
 
