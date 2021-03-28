@@ -1,0 +1,19 @@
+{
+    "matched_profiles": [
+        {
+            "type":["seeker"]
+            "name":[ "John" ]
+            "email":["john@example.com"]
+            "education":["college"]
+            "desired_unemployment:"["internship"]
+            "skills":["coding", "leadership"]
+        },
+        {
+            "type":["recruiter"]
+            "name":[ "Anna" ]
+            "email":["anna@example.com"]
+            "company":["Google"]
+            "open_roles":["software engineer", "ux designer"]
+        }
+    ]
+}
