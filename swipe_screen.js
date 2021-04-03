@@ -1,10 +1,16 @@
 /*
-Created by: Kyra Thomas
+swipe_screen.js
+CIS 454 Project
+John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
 
+Javascript file to assist with screen swiping.
 */
-var currentProfile_index = 0; //var to keep track of the current profile from the list of profiles to pull from
 
+// Globals
+//var to keep track of the current profile from the list of profiles to pull from
+var currentProfile_index = 0; 
 var profile_data;
+
 loadJSON(function (response) {
     // Parse JSON string into object
     profile_data = JSON.parse(response);
@@ -15,7 +21,8 @@ loadJSON(function (response) {
 document.getElementById("yes_button").addEventListener("click", function () {
 
     var yes_promise = new Promise(function (resolve, reject) {
-        push_ret = pushProfile("yes"); //create new profile card to the left of current card
+        //create new profile card to the left of current card
+        push_ret = pushProfile("yes"); 
         currentProfile = push_ret[0];
         newProfile = push_ret[1];
 
@@ -152,12 +159,15 @@ function pushProfile(direction) { //creates a new profile card to show next
 
 
 
-    if (direction == "no") {//insert card to the right of the current card
-        var curr_profile = document.getElementById("carousel_inner").firstChild;//document.getElementById("old_profile");
+    //insert card to the right of the current card
+    if (direction == "no") {
+        //document.getElementById("old_profile");
+        var curr_profile = document.getElementById("carousel_inner").firstChild;
         document.getElementById("carousel_inner").insertBefore(new_profile, null);
 
     }
-    else { //insert card to the left of the current card
+     //insert card to the left of the current card
+    else {
         var curr_profile = document.getElementById("carousel_inner").firstChild;
         document.getElementById("carousel_inner").insertBefore(new_profile, curr_profile);
     }
@@ -166,7 +176,8 @@ function pushProfile(direction) { //creates a new profile card to show next
 
 }
 
-function popProfile(to_delete) {//removed html of old profile card
+//removed html of old profile card
+function popProfile(to_delete) {
 
     document.getElementById("old_profile").remove();
 
@@ -176,7 +187,8 @@ function loadJSON(callback) {
 
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', './dummy_profiles.json', true); // Replace 'my_data' with the path to your file
+    // Replace 'my_data' with the path to your file
+    xobj.open('GET', './dummy_profiles.json', true); 
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode

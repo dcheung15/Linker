@@ -1,4 +1,10 @@
+/*
+user_profile.js
+CIS 454 Project
+John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
 
+Javascript file to assist with user profile editing.
+*/
 
 //document.getElementById("user_profile_inputName").readOnly = true;
 //document.getElementById("user_profile_inputEmail").readOnly = true;

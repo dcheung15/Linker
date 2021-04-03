@@ -1,6 +1,13 @@
+<!--recruiter_profile.html
+    CIS 454 Project
+    John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
+    
+    Recruiter profile edit page.
+    -->
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Base information-->
 <head>
     <meta charset="utf-8">
     <title>454 Project</title>
@@ -10,12 +17,13 @@
     <base href="./">
 </head>
 
-<body>
+
 
     <body style="background-color: white">
         <script src="scripts.js"></script>
         <link rel="stylesheet" href="css/home.css">
 
+        <!-- Menu Bar with Page Links-->
         <div class="projectMenu">
             <a class="active" href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -23,35 +31,46 @@
             <a href="user_profile.html">Edit Profile</a>
         </div>
 
+        <!-- Main body of Page -->
         <div class="container">
+
+            <!-- Page Title-->
             <div class="row">
                 <h1>Recruiter Profile</h1>
             </div>
 
+            <!-- Recutier edit form-->
             <div class="row">
                 <form>
 
+                    <!-- Buttons -->
                     <div class="row">
+                        <!-- Edit Button-->
                         <div class="col-1 mb-3">
                             <button class="btn btn-primary" type="button" id="recruiter_profile_edit_button">Edit</button>
                         </div>
 
+                        <!-- Save Button-->
                         <div class="col-1 mb-3">
                             <button class="btn btn-primary" type="submit" id="recruiter_profile_save_button">Save</button>
                         </div>
                     </div>
 
+                    <!-- User Photo Editing-->
                     <div class="mb-3">
+                        <!-- User Photo-->
                         <div class="col-md-4">
                             <img id="user_photo" src="Images/profilepic.png" style='height: 30%; width: 30%;'>
                         </div>
 
+                        <!-- Upload new photo-->
                         <label for="user_photo_input" class="form-label">Upload photo</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="file" id="user_photo_input">
                         </div>
                     </div>
 
+                    <!-- Name-->
                     <div class="row mb-3">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-3" id="recruiter_profile_inputName_div">
@@ -60,6 +79,7 @@
                         </div>
                     </div>
 
+                    <!-- Email-->
                     <div class="row mb-3">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-3" id="user_profile_inputEmail_div">
@@ -68,14 +88,16 @@
                         </div>
                     </div>
 
+                    <!-- Company-->
                     <div class="row mb-3">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Company</label>
+                        <label for="inputCompany" class="col-sm-2 col-form-label">Company</label>
                         <div class="col-sm-3" id="user_profile_inputEmail_div">
                             <input type="company" placeholder="Google, Twitter, etc." readonly="" class="form-control"
                                 id="recruiter_profile_inputCompany">
                         </div>
                     </div>
 
+                    <!-- Open Roles At Company-->
                     <div class="row mb-3">
                         <label for="inputJobs" class="col-sm-2 col-form-label">Open Roles at our Company</label>
                         <div class="col-sm-3" id="user_profile_inputEmail_div">
@@ -83,17 +105,14 @@
                                 id="recruiter_profile_inputRoles">
                         </div>
                     </div>
+                </form>
+            </div>
+        </div>
 
-
-
-
-
-
+        <!-- js connections-->
         <script src="recruiter_profile.js"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"></script>
-    </body>
 
 </html>

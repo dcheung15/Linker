@@ -1,6 +1,13 @@
+<!--recruiter_swipe_screen.html
+CIS 454 Project
+John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
+
+swipe screen for the recruiter
+-->
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Base information-->
 <head>
     <meta charset="utf-8">
     <title>454 Project</title>
@@ -12,11 +19,11 @@
 
 <body>
     <!-- Here is where we display the job seeker or job requirements -->
-
     <body style="background-color: white">
         <script src="scripts.js"></script>
         <link rel="stylesheet" href="css/home.css">
 
+        <!-- Menu Bar with Page Links-->
         <div class="projectMenu">
             <a class="active" href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -24,8 +31,9 @@
             <a href="user_profile.html">Edit Profile</a>
         </div>
 
+        <!-- Main body of page-->
         <div class="container">
-            <!-- applicate card -->
+            <!-- job card -->
             <div class="row p-4">
                 <div id="profile_card_carousel" class="carousel slide" data-bs-ride="carousel" data-bs-keyboard="true"
                     data-bs-interval="false">
@@ -66,10 +74,12 @@
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <h1 class="card-title" id="template_profile_slide_title"></h1>
-                                            <h2 id="template_profile_slide_applicant_name"></h2>
-                                            <h3 id="template_profile_slide_applicant_email"></h3>
+                                            <h2 id="template_profile_slide_company"></h2>
+                                            
+                                            <h1 id="template_profile_slide_recruiter_name"></h1>
+                                            <h3 id="template_profile_slide_recruiter_email"></h3>
                                             <h4 id="template_profile_slide_location"></h4>
-                                            <p>-- Applicant Description --</p>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -97,7 +107,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- yes/no buttons -->
             <div class="row">
                 <div class="col-lg align-self-center">
@@ -110,11 +119,7 @@
             </div>
         </div>
 
-
-
-
-
-
+        <!-- js connections-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="recruiter_swipe_screen.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

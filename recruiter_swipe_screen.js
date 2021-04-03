@@ -1,20 +1,25 @@
 /*
-The swipe screen recuiters will see to find applicats.
+recruiter_swipe_screen.js
+CIS 454 Project
+John Paul Besong, Doung Lan Cheung, Jeremy Gavrilov, Skyler Hall, Kyra Thomas, Maricel Vicente
 
+Javascript file to assist with recruiter screen swiping.
+// still under construction
 */
 
-var currentProfile_index = 0; //var to keep track of the current profile from the list of profiles to pull from
-
+// Globals
+//var to keep track of the current profile from the list of profiles to pull from
+var currentProfile_index = 0; 
 var profile_data;
 
-var load_data_promise = new Promise(function (resolve, reject) { //Ensures the dummy profile information gets loaded from the json
+//Ensures the dummy profile information gets loaded from the json
+var load_data_promise = new Promise(function (resolve, reject) { 
     loadJSON(function (response) {
         // Parse JSON string into object
         profile_data = JSON.parse(response);
     });
     if (profile_data == "undefined") {
         console.log("load data promise fail")
-
     }
     else{
         console.log("load data promise success")
@@ -27,6 +32,7 @@ load_data_promise.then(function (result) {
     console.log(err);
 });
 
+// Dummy json profile information
 dummy_profile_json = {
     "results": [
         {
@@ -1031,19 +1037,22 @@ dummy_profile_json = {
         }]
 }
 
-var dummyApps = generateApplicants(dummy_profile_json); //generate dummy app information to display in cards
+//generate dummy job information to display in cards
+var dummyJobs = generateJobs(dummy_profile_json);
 
-var applied_apps = Array(); //list of apps applied to
+//list of jobs applied to
+var applied_jobs = Array(); 
 
 
 //user clicks yes, load and go to next profile to the card on the left
 document.getElementById("yes_button").addEventListener("click", function () {
 
     var yes_promise = new Promise(function (resolve, reject) {
-        //store app data
-        applied_apps.push(dummyApps[currentProfile_index-1]);
+        //store job data
+        applied_jobs.push(dummyJobs[currentProfile_index-1]);
 
-        push_ret = pushProfile("yes"); //create new profile card to the left of current card
+        //create new profile card to the left of current card
+        push_ret = pushProfile("yes"); 
         currentProfile = push_ret[0];
         newProfile = push_ret[1];
 
@@ -1051,15 +1060,19 @@ document.getElementById("yes_button").addEventListener("click", function () {
         //load info into card
         /*
         JSON format:
-        { "applicant_name": applicant_name, "applicant_email": applicant_email }
+        { "job_title": job_title, "company": "Company Name", "job_location": job_location,
+        "recruiter_name": recruiter_name, "recruiter_email": recruiter_email }
         */
         
-        var applicant_name = curr_app["applicant_name"];
-        var applicant_email = curr_app["applicant_email"];
+        var curr_job = dummyJobs[currentProfile_index];
+        var recruiter_name = curr_job["recruiter_name"];
+        var recruiter_email = curr_job["recruiter_email"];
+        var location = curr_job["job_location"];
 
         //Add data to html
-        document.getElementById("template_profile_slide_applicant_name").innerHTML = "Applicate: " + applicant_name;
-        document.getElementById("template_profile_slide_applicant_email").innerHTML = "Applicate E-mail: " + applicant_email;
+        document.getElementById("template_profile_slide_recruiter_name").innerHTML = "Applicant: " + recruiter_name;
+        document.getElementById("template_profile_slide_recruiter_email").innerHTML = "Applicant email: " + recruiter_email;
+        document.getElementById("template_profile_slide_location").innerHTML = "Location: " + location;
 
         if (document.getElementById("old_profile") != null) {
             console.log("yes promise success")
@@ -1116,11 +1129,14 @@ document.getElementById("yes_button").addEventListener("click", function () {
 
 });
 
+
+
 //user clicks no, load and go to next profile to the card on the right
 document.getElementById("no_button").addEventListener("click", function () {
 
     var no_promise = new Promise(function (resolve, reject) {
-        push_ret = pushProfile("no"); //create new profile card to the left of current card
+        //create new profile card to the left of current card
+        push_ret = pushProfile("no"); 
         currentProfile = push_ret[0];
         newProfile = push_ret[1];
 
@@ -1128,15 +1144,19 @@ document.getElementById("no_button").addEventListener("click", function () {
         //load info into card
         /*
         JSON format:
-        { "applicant_name": applicant_name, "applicant_email": applicant_email}
+        { "job_title": job_title, "company": "Company Name", "job_location": job_location,
+        "recruiter_name": recruiter_name, "recruiter_email": recruiter_email }
         */
-        
-        var applicant_name = curr_app["applicant_name"];
-        var applicant_email = curr_app["applicant_email"];
+
+        var curr_job = dummyJobs[currentProfile_index];
+        var recruiter_name = curr_job["recruiter_name"];
+        var recruiter_email = curr_job["recruiter_email"];
+        var location = curr_job["job_location"];
 
         //Add data to html
-        document.getElementById("template_profile_slide_applicant_name").innerHTML = "Applicate: " + applicant_name;
-        document.getElementById("template_profile_slide_applicant_email").innerHTML = "Applicate: " + applicant_email;
+        document.getElementById("template_profile_slide_recruiter_name").innerHTML = "Applicant: " + recruiter_name;
+        document.getElementById("template_profile_slide_recruiter_email").innerHTML = "Applicant email: " + recruiter_email;
+        document.getElementById("template_profile_slide_location").innerHTML = "Location: " + location;
 
         if (document.getElementById("old_profile") != null) {
             console.log("no promise success")
@@ -1169,30 +1189,37 @@ document.getElementById("no_button").addEventListener("click", function () {
 
 });
 
-function pushProfile(direction) { //creates a new profile card to show next
+//creates a new profile card to show next
+function pushProfile(direction) { 
 
     //copy template profile html into a new div element
     var template_profile_html = document.getElementById("template_profile_slide").innerHTML;
     var new_profile = document.createElement("div");
-    new_profile.innerHTML = template_profile_html; //copy html
+
+    //copy html
+    new_profile.innerHTML = template_profile_html; 
 
     //rename ids for current profile
     document.getElementById("template_profile_slide").setAttribute("id", "old_profile");
-    document.getElementById("template_profile_slide_applicant_name").setAttribute("id", "old_profile_applicant_name");
-    document.getElementById("template_profile_slide_applicant_email").setAttribute("id", "old_profile_applicant_email");
+    document.getElementById("template_profile_slide_title").setAttribute("id", "old_profile_title");
+    document.getElementById("template_profile_slide_company").setAttribute("id", "old_profile_company");;
+    document.getElementById("template_profile_slide_location").setAttribute("id", "old_profile_location");
+    document.getElementById("template_profile_slide_recruiter_name").setAttribute("id", "old_profile_recruiter_name");
+    document.getElementById("template_profile_slide_recruiter_email").setAttribute("id", "old_profile_recruiter_email");
 
     //set attributes for new profile
     new_profile.setAttribute("class", "carousel-item");
     new_profile.setAttribute("id", "template_profile_slide");
 
-
-
-    if (direction == "no") {//insert card to the right of the current card
-        var curr_profile = document.getElementById("carousel_inner").firstChild;//document.getElementById("old_profile");
+    //insert card to the right of the current card
+    if (direction == "no") {
+        //document.getElementById("old_profile");
+        var curr_profile = document.getElementById("carousel_inner").firstChild;
         document.getElementById("carousel_inner").insertBefore(new_profile, null);
 
     }
-    else { //insert card to the left of the current card
+    //insert card to the left of the current card
+    else { 
         var curr_profile = document.getElementById("carousel_inner").firstChild;
         document.getElementById("carousel_inner").insertBefore(new_profile, curr_profile);
     }
@@ -1201,17 +1228,20 @@ function pushProfile(direction) { //creates a new profile card to show next
 
 }
 
-function popProfile(to_delete) {//removed html of old profile card
+//removed html of old profile card
+function popProfile(to_delete) {
 
     document.getElementById("old_profile").remove();
 
 }
 
+//json call back
 function loadJSON(callback) {
 
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', './dummy_profiles.json', true); // Replace 'my_data' with the path to your file
+    // Replace 'my_data' with the path to your file
+    xobj.open('GET', './dummy_profiles.json', true); 
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -1221,18 +1251,24 @@ function loadJSON(callback) {
     xobj.send(null);
 }
 
-function generateApplicants(profile_data) {
+function generateJobs(profile_data) {
 
-    var num_apps = 20;// total number of apps generated by Applicates()
+    job_titles = ["Intern", "Full-time", "Contractor"]
+    job_position = ["Software Developer", "Graphics Designer", "Assistant", "Finance"]
 
-    var apps = new Array(num_apps); //Object(); 
+    // total number of jobs generated by generateJobs()
+    var num_jobs = 20;
 
-    for (i = 0; i < num_apps; i++) {
-        //gather information for app
+    //Object(); 
+    var jobs = new Array(num_jobs); 
+
+    for (i = 0; i < num_jobs; i++) {
+        //gather information for job
         //console.log(profile_data)
-        applicant = profile_data["results"][i]
-        applicant_name = applicant["name"]["first"] + " " + applicant["name"]["last"];
-        applicant_email = applicant["email"]
+        recruiter = profile_data["results"][i]
+        recruiter_name = recruiter["name"]["first"] + " " + recruiter["name"]["last"];
+        recruiter_email = recruiter["email"]
+        job_location = recruiter["location"]["city"] + ", " + recruiter["location"]["state"]
 
         const getRandomNumber = (min, max) => {
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -1240,11 +1276,12 @@ function generateApplicants(profile_data) {
 
         pos_index = getRandomNumber(0,3)
         title_index = getRandomNumber(0,2)
+        job_title = job_position[pos_index] + " " + job_titles[title_index]
 
         //write to json
-        //apps.push({ "applicant_name": applicant_name, "applicant_email": applicant_email })
-        apps[i] = { "applicant_name": applicant_name, "applicant_email": applicant_email }
+        //jobs.push({ "job_title": job_title, "company": "Company Name", "job_location": job_location, "recruiter_name": recruiter_name, "recruiter_email": recruiter_email })
+        jobs[i] = { "job_title": job_title, "company": "Company Name", "job_location": job_location, "recruiter_name": recruiter_name, "recruiter_email": recruiter_email }
     }
 
-    return apps
+    return jobs
 }
