@@ -6,7 +6,7 @@ CSS file for entire application.
 
 /* Add a black background color to the top navigation */
 .projectMenu {
-	background-color: #86A3C3;
+	background-color: #219ebc;
 	overflow: hidden;
 }
 
@@ -29,13 +29,13 @@ CSS file for entire application.
   
 /* Add a color to the active/current link */
 .projectMenu a.active {
-    background-color: #229afd;
+    background-color: #113C4F;
     color: white;
   }
 
 /* Style of the Background/body*/
 body {
-    background-color: #70deff;
+    background-color: #8ecae6;
 }
 
 /* Style for standard buttons*/
@@ -48,7 +48,7 @@ body {
   color: #fff;
   font: inherit;
   font-family: 'Arial';
-  background-color: #225bc5;
+  background-color: #113C4F;
   border-style: dashed;
   box-shadow: 0 9px #999;
 }
@@ -128,7 +128,7 @@ body {
 .form {
   position: relative;
   z-index: 1;
-  background: #7cb5ff;
+  background: #219ebc;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -155,7 +155,7 @@ border-radius:10px;
   font-weight: bold;
   letter-spacing: .1em;
   outline: 0;
-  background: #225bc5;
+  background: #113C4F;
   width: 100%;
   border: 0;
 border-radius:30px;
