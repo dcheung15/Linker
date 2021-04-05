@@ -50,7 +50,7 @@ body {
   font-family: 'Arial';
   background-color: #113C4F;
   border-style: dashed;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 0px #999;
 }
 
 /* Change the color of buttons when hovering*/
@@ -90,7 +90,7 @@ body {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  font-size:15px;
+  font-size:25px;
 }
 
 /* Style for standard centered items*/
@@ -124,7 +124,6 @@ body {
 }
 
 
-/*attempt new stuff 3.24.2021*/
 .form {
   position: relative;
   z-index: 1;
