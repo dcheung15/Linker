@@ -1041,7 +1041,7 @@ dummy_profile_json = {
 var dummyJobs = generateJobs(dummy_profile_json);
 
 //list of jobs applied to
-var applied_jobs = Array(); 
+var accepted_apps = Array(); 
 
 
 //user clicks yes, load and go to next profile to the card on the left
@@ -1049,7 +1049,7 @@ document.getElementById("yes_button").addEventListener("click", function () {
 
     var yes_promise = new Promise(function (resolve, reject) {
         //store job data
-        applied_jobs.push(dummyJobs[currentProfile_index-1]);
+        accepted_apps.push(dummyJobs[currentProfile_index-1]);
 
         //create new profile card to the left of current card
         push_ret = pushProfile("yes"); 
@@ -1069,13 +1069,21 @@ document.getElementById("yes_button").addEventListener("click", function () {
         var recruiter_email = curr_job["recruiter_email"];
         var location = curr_job["job_location"];
 
+        next_profile_info = profile_data["results"][currentProfile_index];
+        var yes_next_profile_picture = next_profile_info["picture"]["medium"];
+
+        
+
+        swipe_testing_yes(recruiter_name, recruiter_email, location)
+
         //Add data to html
         document.getElementById("template_profile_slide_recruiter_name").innerHTML = "Applicant: " + recruiter_name;
         document.getElementById("template_profile_slide_recruiter_email").innerHTML = "Applicant email: " + recruiter_email;
         document.getElementById("template_profile_slide_location").innerHTML = "Location: " + location;
+        document.getElementById("template_profile_slide_img").setAttribute("src", yes_next_profile_picture);
 
         if (document.getElementById("old_profile") != null) {
-            console.log("yes promise success")
+            //console.log("yes promise success")
 
             //wait until carousel transition has finished
             /*$("#profile_card_carousel").on('slid.bs.carousel', function () {
@@ -1153,13 +1161,19 @@ document.getElementById("no_button").addEventListener("click", function () {
         var recruiter_email = curr_job["recruiter_email"];
         var location = curr_job["job_location"];
 
+        next_profile_info = profile_data["results"][currentProfile_index];
+        var no_next_profile_picture = next_profile_info["picture"]["medium"];
+
+        swipe_testing_no(recruiter_name, recruiter_email, location)
+
         //Add data to html
         document.getElementById("template_profile_slide_recruiter_name").innerHTML = "Applicant: " + recruiter_name;
         document.getElementById("template_profile_slide_recruiter_email").innerHTML = "Applicant email: " + recruiter_email;
         document.getElementById("template_profile_slide_location").innerHTML = "Location: " + location;
+        document.getElementById("template_profile_slide_img").setAttribute("src", no_next_profile_picture);
 
         if (document.getElementById("old_profile") != null) {
-            console.log("no promise success")
+            //console.log("no promise success")
 
             //wait until carousel transition has finished
             /*$("#profile_card_carousel").on('slid.bs.carousel', function () {
@@ -1206,6 +1220,7 @@ function pushProfile(direction) {
     document.getElementById("template_profile_slide_location").setAttribute("id", "old_profile_location");
     document.getElementById("template_profile_slide_recruiter_name").setAttribute("id", "old_profile_recruiter_name");
     document.getElementById("template_profile_slide_recruiter_email").setAttribute("id", "old_profile_recruiter_email");
+    document.getElementById("template_profile_slide_img").setAttribute("id", "old_template_profile_slide_img");
 
     //set attributes for new profile
     new_profile.setAttribute("class", "carousel-item");
@@ -1284,4 +1299,26 @@ function generateJobs(profile_data) {
     }
 
     return jobs
+}
+
+
+function swipe_testing_yes(name, email, loc) {
+    console.log("User pressed yes.") //for testing
+
+    console.log("List of applications accetpted:") //for testing
+    for (i = 0; i < accepted_apps.length; i++) {
+        console.log(accepted_apps[i])
+    }
+
+    console.log("Current application card information: " + name + ", " + email + ", and " + loc) //for testing
+}
+
+function swipe_testing_no(name, email, loc) {
+    console.log("User pressed no.") //for testing
+    console.log("List of applications accetpted:") //for testing
+    for (i = 0; i < accepted_apps.length; i++) {
+        console.log(accepted_apps[i])
+    }
+
+    console.log("Current application card information: " + name + ", " + email + ", and " + loc) //for testing
 }

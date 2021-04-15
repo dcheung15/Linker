@@ -8,11 +8,11 @@ Javascript file to assist with applicant screen swiping.
 
 // Globals
 //var to keep track of the current profile from the list of profiles to pull from
-var currentProfile_index = 0; 
+var currentProfile_index = 0;
 var profile_data;
 
 //Ensures the dummy profile information gets loaded from the json
-var load_data_promise = new Promise(function (resolve, reject) { 
+var load_data_promise = new Promise(function (resolve, reject) {
     loadJSON(function (response) {
         // Parse JSON string into object
         profile_data = JSON.parse(response);
@@ -20,7 +20,7 @@ var load_data_promise = new Promise(function (resolve, reject) {
     if (profile_data == "undefined") {
         console.log("load data promise fail")
     }
-    else{
+    else {
         console.log("load data promise success")
     }
 });
@@ -1040,7 +1040,7 @@ dummy_profile_json = {
 var dummyJobs = generateJobs(dummy_profile_json);
 
 //list of jobs applied to
-var applied_jobs = Array(); 
+var applied_jobs = Array();
 
 
 //user clicks yes, load and go to next profile to the card on the left
@@ -1048,10 +1048,10 @@ document.getElementById("yes_button").addEventListener("click", function () {
 
     var yes_promise = new Promise(function (resolve, reject) {
         //store job data
-        applied_jobs.push(dummyJobs[currentProfile_index-1]);
+        applied_jobs.push(dummyJobs[currentProfile_index - 1]);
 
         //create new profile card to the left of current card
-        push_ret = pushProfile("yes"); 
+        push_ret = pushProfile("yes");
         currentProfile = push_ret[0];
         newProfile = push_ret[1];
 
@@ -1062,13 +1062,15 @@ document.getElementById("yes_button").addEventListener("click", function () {
         { "job_title": job_title, "company": "Company Name", "job_location": job_location,
         "recruiter_name": recruiter_name, "recruiter_email": recruiter_email }
         */
-        
+
         var curr_job = dummyJobs[currentProfile_index];
         var recruiter_name = curr_job["recruiter_name"];
         var recruiter_email = curr_job["recruiter_email"];
         var job_location = curr_job["job_location"];
         var job_title = curr_job["job_title"];
         var company = curr_job["company"];
+
+        swipe_testing_yes(job_title, job_location, recruiter_email)
 
         //Add data to html
         document.getElementById("template_profile_slide_title").innerHTML = job_title;
@@ -1078,7 +1080,7 @@ document.getElementById("yes_button").addEventListener("click", function () {
         document.getElementById("template_profile_slide_recruiter_email").innerHTML = "Recruiter email: " + recruiter_email;
 
         if (document.getElementById("old_profile") != null) {
-            console.log("yes promise success")
+            //console.log("yes promise success")
 
             //wait until carousel transition has finished
             /*$("#profile_card_carousel").on('slid.bs.carousel', function () {
@@ -1139,7 +1141,7 @@ document.getElementById("no_button").addEventListener("click", function () {
 
     var no_promise = new Promise(function (resolve, reject) {
         //create new profile card to the left of current card
-        push_ret = pushProfile("no"); 
+        push_ret = pushProfile("no");
         currentProfile = push_ret[0];
         newProfile = push_ret[1];
 
@@ -1158,6 +1160,8 @@ document.getElementById("no_button").addEventListener("click", function () {
         var job_title = curr_job["job_title"];
         var company = curr_job["company"];
 
+        swipe_testing_no(job_title, job_location, recruiter_email)
+
         //Add data to html
         document.getElementById("template_profile_slide_title").innerHTML = job_title;
         document.getElementById("template_profile_slide_company").innerHTML = company;
@@ -1166,7 +1170,7 @@ document.getElementById("no_button").addEventListener("click", function () {
         document.getElementById("template_profile_slide_recruiter_email").innerHTML = "Recruiter email: " + recruiter_email;
 
         if (document.getElementById("old_profile") != null) {
-            console.log("no promise success")
+            //console.log("no promise success")
 
             //wait until carousel transition has finished
             /*$("#profile_card_carousel").on('slid.bs.carousel', function () {
@@ -1197,14 +1201,14 @@ document.getElementById("no_button").addEventListener("click", function () {
 });
 
 //creates a new profile card to show next
-function pushProfile(direction) { 
+function pushProfile(direction) {
 
     //copy template profile html into a new div element
     var template_profile_html = document.getElementById("template_profile_slide").innerHTML;
     var new_profile = document.createElement("div");
 
     //copy html
-    new_profile.innerHTML = template_profile_html; 
+    new_profile.innerHTML = template_profile_html;
 
     //rename ids for current profile
     document.getElementById("template_profile_slide").setAttribute("id", "old_profile");
@@ -1226,7 +1230,7 @@ function pushProfile(direction) {
 
     }
     //insert card to the left of the current card
-    else { 
+    else {
         var curr_profile = document.getElementById("carousel_inner").firstChild;
         document.getElementById("carousel_inner").insertBefore(new_profile, curr_profile);
     }
@@ -1248,7 +1252,7 @@ function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
     // Replace 'my_data' with the path to your file
-    xobj.open('GET', './dummy_profiles.json', true); 
+    xobj.open('GET', './dummy_profiles.json', true);
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -1267,7 +1271,7 @@ function generateJobs(profile_data) {
     var num_jobs = 20;
 
     //Object(); 
-    var jobs = new Array(num_jobs); 
+    var jobs = new Array(num_jobs);
 
     for (i = 0; i < num_jobs; i++) {
         //gather information for job
@@ -1279,10 +1283,10 @@ function generateJobs(profile_data) {
 
         const getRandomNumber = (min, max) => {
             return Math.floor(Math.random() * (max - min + 1)) + min;
-          };
+        };
 
-        pos_index = getRandomNumber(0,3)
-        title_index = getRandomNumber(0,2)
+        pos_index = getRandomNumber(0, 3)
+        title_index = getRandomNumber(0, 2)
         job_title = job_position[pos_index] + " " + job_titles[title_index]
 
         //write to json
@@ -1291,4 +1295,25 @@ function generateJobs(profile_data) {
     }
 
     return jobs
+}
+
+function swipe_testing_yes(title, location, email) {
+    console.log("User pressed yes.") //for testing
+
+    console.log("List of jobs applied to:") //for testing
+    for (i = 0; i < applied_jobs.length; i++) {
+        console.log(applied_jobs[i])
+    }
+
+    console.log("Current job card information: " + title + ", " + location + ", and" + email) //for testing
+}
+
+function swipe_testing_no(title, location, email) {
+    console.log("User pressed no.") //for testing
+    console.log("List of jobs applied to:") //for testing
+    for (i = 0; i < applied_jobs.length; i++) {
+        console.log(applied_jobs[i])
+    }
+
+    console.log("Current job card information: " + title + ", " + location + ", and" + email) //for testing
 }
