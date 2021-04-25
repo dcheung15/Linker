@@ -1,6 +1,19 @@
 # 454Project
 
-# !!! Instructions under construction !!!
+# Instructions for testing:
+
+## Known issues (please read first):
+Unfortunately we were unable to connect the frontend and backend of our project. To elaborate, actions that require saving to a database do not work. For example, signing up does not actually create an account however the UI does work. So if you entered in a password, the view password button does show or hide the password. Other features that do not work: signing in, saving user or recruiter profiles, and getting job matches.
+
+## Getting started:
+1. Install and open Visual Studio Code
+2. Go to File > Open Folder and select where you have the project code
+3. In Visual Studio Code, add the Live Server extension
+4. Make sure you have the file index.html selected and open in VS Code
+5. On the blue bar across the window, click "Go Live" on the bottom right. This should open up a new tab in your browser and you should see the home page for Linker! If the broswer does not open up automatically, you can go to http://127.0.0.1:[PORT NUMBER]/index.html where the PORT NUMBER is the port number displayed by Live Server when you clicked the "Go Live" button.
+
+
+# !!! Development Instructions under construction !!!
 
 ## How to start the server
 
