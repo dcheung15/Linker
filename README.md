@@ -10,7 +10,7 @@ Unfortunately we were unable to connect the frontend and backend of our project.
 2. Go to File > Open Folder and select where you have the project code
 3. In Visual Studio Code, add the Live Server extension
 4. Make sure you have the file index.html selected and open in VS Code
-5. On the blue bar across the window, click "Go Live" on the bottom right. This should open up a new tab in your browser and you should see the home page for Linker! If the broswer does not open up automatically, you can go to http://127.0.0.1:[PORT NUMBER]/index.html where the PORT NUMBER is the port number displayed by Live Server when you clicked the "Go Live" button.
+5. On the blue bar across the bottom of the window, click "Go Live" on the bottom right. This should open up a new tab in your browser and you should see the home page for Linker! If the broswer does not open up automatically, you can go to http://127.0.0.1:[PORT NUMBER]/index.html where the PORT NUMBER is the port number displayed by Live Server when you clicked the "Go Live" button.
 
 
 # !!! Development Instructions under construction !!!
